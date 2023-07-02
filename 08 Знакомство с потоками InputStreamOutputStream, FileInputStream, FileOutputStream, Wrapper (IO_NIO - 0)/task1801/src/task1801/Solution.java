@@ -1,8 +1,8 @@
+//Complete
+
 package task1801;
 
-import java.io.BufferedReader;
-import java.io.FileInputStream;
-import java.io.InputStreamReader;
+import java.io.*;
 
 /* 
 Максимальный байт
@@ -18,6 +18,22 @@ Requirements:
 4. Поток чтения из файла должен быть закрыт.*/
 
 public class Solution {
-    public static void main(String[] args) throws Exception {
+    public static void main(String[] args) {
+        byte maxByte = 0;
+        byte tempByte;
+
+        try (BufferedReader readerFileName = new BufferedReader(new InputStreamReader(System.in));
+             FileInputStream fileInputStream = new FileInputStream(readerFileName.readLine())) {
+            while (true) {
+                if ((tempByte = (byte) fileInputStream.read()) != -1) {
+                    if (maxByte < tempByte) {
+                        maxByte = tempByte;
+                    }
+                } else break;
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        System.out.println(maxByte);
     }
 }

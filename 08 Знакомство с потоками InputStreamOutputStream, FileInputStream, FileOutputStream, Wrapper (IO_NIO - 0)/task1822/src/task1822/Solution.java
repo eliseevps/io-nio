@@ -1,3 +1,5 @@
+//Complete
+
 package task1822;
 
 import java.io.BufferedReader;
@@ -38,5 +40,16 @@ Requirements:
 
 public class Solution {
     public static void main(String[] args) {
+        try (BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
+             BufferedReader fileReader = new BufferedReader(new FileReader(bufferedReader.readLine()))) {
+            while (fileReader.ready()) {
+                String str = fileReader.readLine();
+                if (str.startsWith(args[0])) {
+                    System.out.println(str);
+                }
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }

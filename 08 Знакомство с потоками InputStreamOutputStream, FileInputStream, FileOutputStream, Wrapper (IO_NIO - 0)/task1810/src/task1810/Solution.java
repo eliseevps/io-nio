@@ -1,3 +1,5 @@
+//Complete
+
 package task1810;
 
 import java.io.BufferedReader;
@@ -22,10 +24,27 @@ Requirements:
 
 public class Solution {
     public static void main(String[] args) throws DownloadException {
-
+        FileInputStream fileInputStream;
+        final int COUNT_BYTE = 1000;
+        try (BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in))) {
+            while (true) {
+                 fileInputStream = new FileInputStream(bufferedReader.readLine());
+                 int count = fileInputStream.readAllBytes().length;
+                System.out.println(count);
+                 if (count > COUNT_BYTE) {
+                     fileInputStream.close();
+                     throw new DownloadException();
+                 }
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     public static class DownloadException extends Exception {
-
+        @Override
+        public String getMessage() {
+            return "DownloadException. Файл менее 1000 байт.";
+        }
     }
 }

@@ -1,3 +1,5 @@
+//Complete
+
 package task1824;
 
 import java.io.*;
@@ -19,6 +21,18 @@ Requirements:
 6. Команду "System.exit();" использовать нельзя.*/
 
 public class Solution {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
+        FileInputStream fileInputStream;
+        String fileName = null;
+
+        try (BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in))) {
+            while (true) {
+                fileName = bufferedReader.readLine();
+                fileInputStream = new FileInputStream(fileName);
+                fileInputStream.close();
+            }
+        } catch (FileNotFoundException e) {
+            System.err.println("File " + fileName + " not found. Exit!");
+        }
     }
 }

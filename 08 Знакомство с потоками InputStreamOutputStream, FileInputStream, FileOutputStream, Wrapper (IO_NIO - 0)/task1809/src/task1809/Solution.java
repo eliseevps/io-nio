@@ -1,8 +1,9 @@
+//Complete
+
 package task1809;
 
 import java.io.*;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 /* 
@@ -20,6 +21,25 @@ Requirements:
 
 public class Solution {
     public static void main(String[] args) {
+        List<Byte> listArray = new ArrayList<>();
+        byte tempByte;
 
+        try (BufferedReader readerFileName = new BufferedReader(new InputStreamReader(System.in));
+             FileInputStream fileInputStream = new FileInputStream(readerFileName.readLine());
+             FileOutputStream fileOutputStream = new FileOutputStream(readerFileName.readLine())) {
+            while (true) {
+                if ((tempByte = (byte) fileInputStream.read()) != -1) {
+                    listArray.add(tempByte);
+                } else break;
+            }
+            for (int i = listArray.size() - 1; i >= 0; i--) {
+                //Убираем возврат каретки (символ 10)
+                if (listArray.get(i) != 10) {
+                    fileOutputStream.write(listArray.get(i));
+                }
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }

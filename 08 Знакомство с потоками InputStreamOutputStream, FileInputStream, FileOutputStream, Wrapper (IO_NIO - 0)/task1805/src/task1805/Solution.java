@@ -1,7 +1,10 @@
+//Complete
+
 package task1805;
 
 import java.io.BufferedReader;
 import java.io.FileInputStream;
+import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.Set;
 import java.util.TreeSet;
@@ -29,6 +32,22 @@ Requirements:
 5. Поток чтения из файла должен быть закрыт.*/
 
 public class Solution {
-    public static void main(String[] args) throws Exception {
+    public static void main(String[] args) {
+        Set<Byte> listSet = new TreeSet<>();
+        byte tempByte;
+
+        try (BufferedReader readerFileName = new BufferedReader(new InputStreamReader(System.in));
+             FileInputStream fileInputStream = new FileInputStream(readerFileName.readLine())) {
+            while (true) {
+                if ((tempByte = (byte) fileInputStream.read()) != -1) {
+                    listSet.add(tempByte);
+                } else break;
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        for (Byte number : listSet) {
+            System.out.print(number + " ");
+        }
     }
 }
