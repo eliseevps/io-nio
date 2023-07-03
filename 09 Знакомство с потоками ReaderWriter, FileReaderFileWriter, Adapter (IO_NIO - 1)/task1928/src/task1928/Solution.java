@@ -30,7 +30,11 @@ public class Solution {
                 InputStream is = Solution.class.getClassLoader().getResourceAsStream(args[1]);
         ) {
             byte[] b = new byte[is.available()];
-            outputStream.write(is.read(b));
+            is.read(b);
+            outputStream.write(b);
+            is.close();
+            outputStream.flush();
+            outputStream.close();
 
             int value = 123_456_789;
             System.out.println(value);
