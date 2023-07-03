@@ -1,3 +1,5 @@
+//Complete
+
 package task1906;
 
 import java.io.*;
@@ -25,5 +27,18 @@ Requirements:
 
 public class Solution {
     public static void main(String[] args) {
+        ArrayList<Integer> list = new ArrayList<>();
+        try (BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
+             FileReader fileReader = new FileReader(bufferedReader.readLine());
+             FileWriter fileWriter = new FileWriter(bufferedReader.readLine())) {
+            while (fileReader.ready()) {
+                list.add(fileReader.read());
+            }
+            for (int i = 1; i < list.size(); i = i + 2) {
+                fileWriter.write(list.get(i));
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }

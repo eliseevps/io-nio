@@ -1,3 +1,5 @@
+//Complete
+
 package task1907;
 
 import java.io.BufferedReader;
@@ -22,5 +24,22 @@ Requirements:
 
 public class Solution {
     public static void main(String[] args) {
+        try (BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
+             BufferedReader fileReader = new BufferedReader(new FileReader(bufferedReader.readLine()))) {
+            String WORLD = "world";
+            int count = 0;
+            while (fileReader.ready()) {
+                String str = fileReader.readLine();
+                String[] arrayStr = str.split(",");
+                for (String word : arrayStr) {
+                    if (word.equals(WORLD)) {
+                        count++;
+                    }
+                }
+            }
+            System.out.println("Количество слов " + WORLD + " в файле - " + count);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }
